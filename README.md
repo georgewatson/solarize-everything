@@ -22,6 +22,16 @@ It currently operates on the following CSS properties:
 * `background-color` and variants
 * `border-color` and variants
 
+## Examples
+
+![](examples/github.png)
+
+![](examples/google.png)
+
+![](examples/guardian.png)
+
+![](examples/wikipedia.png)
+
 ## Known issues
 
 * While most sites are greatly improved by the new palette, some may look a bit
