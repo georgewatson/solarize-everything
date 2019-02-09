@@ -27,6 +27,8 @@ It currently operates on the following CSS properties:
 * While most sites are greatly improved by the new palette, some may look a bit
   ugly. The script can generally be disabled on a per-site basis in your
   userscript settings.
+* Elements not present on the initial page load do not have their colours
+  modified
 * Websites that don't explicitly set a background colour retain their white (or
   browser-default) background
 * Gradient backgrounds are not currently solarized
