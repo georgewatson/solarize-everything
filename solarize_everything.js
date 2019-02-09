@@ -9,6 +9,7 @@
 // ==/UserScript==
 
 function rgbToLab(rgb){
+    // Based on https://github.com/antimatter15/rgb-lab/blob/master/color.js
     var r = rgb[0] / 255,
         g = rgb[1] / 255,
         b = rgb[2] / 255,
