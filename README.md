@@ -43,6 +43,4 @@ It currently operates on the following CSS properties:
   browser-default) background
 * Gradient backgrounds are not currently solarized
 * Images are not currently recoloured (and probably never will be)
-* The colour scheme chosen for a standard black-on-white page is Solarized
-  base03-on-base3, rather than the standard base00-on-base3
 * I am terrible at JavaScript.
