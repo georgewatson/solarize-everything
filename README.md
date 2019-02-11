@@ -13,8 +13,8 @@ or an alternative userscript manager of your choice.
 ## How it works
 
 The script iterates over the page elements, extracts the computed colour, and
-sets the colour to the Solarized colour (from the sixteen-colour palette) with
-the minimum Euclidian distance from this colour in
+sets the colour to the Solarized colour (divided into foreground and background
+palettes) with the minimum Euclidian distance from this colour in
 [CIELAB](https://en.wikipedia.org/wiki/CIELAB_color_space) space.
 
 It currently operates on the following CSS properties:
@@ -43,4 +43,6 @@ It currently operates on the following CSS properties:
   browser-default) background
 * Gradient backgrounds are not currently solarized
 * Images are not currently recoloured (and probably never will be)
+* The examples above demonstrate an old version of the script; recolouring has
+  since been moderately improved
 * I am terrible at JavaScript.

@@ -56,7 +56,8 @@ function colorDistance(rgb1, rgb2) {
     if(rgb1 && rgb2) {
         var v1 = rgbToLab(rgb1);
         var v2 = rgbToLab(rgb2);
-        return Math.sqrt(Math.pow(v1[0] - v2[0], 2) + Math.pow(v1[1] - v2[1], 2) + Math.pow(v1[2] - v2[2], 2));
+        return Math.sqrt(Math.pow(v1[0] - v2[0], 2) +
+            Math.pow(v1[1] - v2[1], 2) + Math.pow(v1[2] - v2[2], 2));
     }
     return 10000;
 };
