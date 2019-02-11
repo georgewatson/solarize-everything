@@ -38,10 +38,10 @@ It currently operates on the following CSS properties:
   ugly. The script can generally be disabled on a per-site basis in your
   userscript settings.
 * Elements not present on the initial page load do not have their colours
-  modified
+  modified ([#1](https://github.com/georgewatson/solarize-everything/issues/1))
+* Gradient backgrounds are not currently solarized ([#2](https://github.com/georgewatson/solarize-everything/issues/2))
 * Websites that don't explicitly set a background colour retain their white (or
-  browser-default) background
-* Gradient backgrounds are not currently solarized
+  browser-default) background ([#3](https://github.com/georgewatson/solarize-everything/issues/3))
 * Images are not currently recoloured (and probably never will be)
 * The examples above demonstrate an old version of the script; recolouring has
   since been moderately improved
