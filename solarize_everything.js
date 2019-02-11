@@ -56,8 +56,7 @@ function colorDistance(rgb1, rgb2) {
     if(rgb1 && rgb2) {
         var v1 = rgbToLab(rgb1);
         var v2 = rgbToLab(rgb2);
-        return Math.sqrt(Math.pow(v1[0] - v2[0], 2) +
-            Math.pow(v1[1] - v2[1], 2) + Math.pow(v1[2] - v2[2], 2));
+        return Math.sqrt(Math.pow(v1[0] - v2[0], 2) + Math.pow(v1[1] - v2[1], 2) + Math.pow(v1[2] - v2[2], 2));
     }
     return 10000;
 };
@@ -97,23 +96,23 @@ function closestColor(color, colorList) {
 (function() {
     'use strict';
 
-    const solarizedColors = [[0, 43, 54], // #002b36 base03
-                             [7, 54, 66], // #073642 base02
-                             [88, 110, 117], // #586e75 base01
-                             [101, 123, 131], // #657b83 base00
-                             [131, 148, 150], // #839496 base0
-                             [147, 161, 161], // #93a1a1 base1
-                             [238, 232, 213], // #eee8d5 base2
-                             [253, 246, 227], // #fdf6e3 base3
-                             [181, 137, 0], // #b58900 yellow
-                             [203, 75, 22], // #cb4b16 orange
-                             [220, 50, 47], // #dc322f red
-                             [211, 54, 130], // #d33682 magenta
-                             [108, 113, 196], // #6c71c4 violet
-                             [38, 139, 210], // #268bd2 blue
-                             [42, 161, 152], // #2aa198 cyan
-                             [133, 153, 0] // #859900 green
-                            ];
+    // const solarizedColors = [[0, 43, 54], // #002b36 base03
+    //                          [7, 54, 66], // #073642 base02
+    //                          [88, 110, 117], // #586e75 base01
+    //                          [101, 123, 131], // #657b83 base00
+    //                          [131, 148, 150], // #839496 base0
+    //                          [147, 161, 161], // #93a1a1 base1
+    //                          [238, 232, 213], // #eee8d5 base2
+    //                          [253, 246, 227], // #fdf6e3 base3
+    //                          [181, 137, 0], // #b58900 yellow
+    //                          [203, 75, 22], // #cb4b16 orange
+    //                          [220, 50, 47], // #dc322f red
+    //                          [211, 54, 130], // #d33682 magenta
+    //                          [108, 113, 196], // #6c71c4 violet
+    //                          [38, 139, 210], // #268bd2 blue
+    //                          [42, 161, 152], // #2aa198 cyan
+    //                          [133, 153, 0] // #859900 green
+    //                         ];
 
     const foregroundColors = [
                               [88, 110, 117], // #586e75 base01
@@ -164,7 +163,7 @@ function closestColor(color, colorList) {
         if (borderColor.indexOf('rgba') < 0) {
             elements[i].style.borderColor =
                 closestColor(colorToArray(borderColor),
-                             solarizedColors);
+                             foregroundColors);
         }
 
     }
