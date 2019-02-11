@@ -79,32 +79,14 @@ function arrayToColor(rgb) {
 };
 
 
-function closestColor(color) {
-    const solarizedColors = [[0, 43, 54], // "#002b36",
-                             [7, 54, 66], // "#073642",
-                             [88, 110, 117], // "#586e75",
-                             [101, 123, 131], // "#657b83",
-                             [131, 148, 150], // "#839496",
-                             [147, 161, 161], // "#93a1a1",
-                             [238, 232, 213], // "#eee8d5",
-                             [253, 246, 227], // "#fdf6e3",
-                             [181, 137, 0], // "#b58900",
-                             [203, 75, 22], // "#cb4b16",
-                             [220, 50, 47], // "#dc322f",
-                             [211, 54, 130], // "#d33682",
-                             [108, 113, 196], // "#6c71c4",
-                             [38, 139, 210], // "#268bd2",
-                             [42, 161, 152], // "#2aa198",
-                             [133, 153, 0] // "#859900"
-                            ];
-
+function closestColor(color, colorList) {
     var minDist = 9999;
     var bestMatch = color;
-    for (const solarizedColor of solarizedColors) {
-        var thisDist = colorDistance(solarizedColor, color);
+    for (const possibleColor of colorList) {
+        var thisDist = colorDistance(possibleColor, color);
         if (thisDist < minDist) {
             minDist = thisDist;
-            bestMatch = solarizedColor;
+            bestMatch = possibleColor;
         }
     }
     return arrayToColor(bestMatch);
@@ -114,20 +96,74 @@ function closestColor(color) {
 (function() {
     'use strict';
 
+    const solarizedColors = [[0, 43, 54], // #002b36 base03
+                             [7, 54, 66], // #073642 base02
+                             [88, 110, 117], // #586e75 base01
+                             [101, 123, 131], // #657b83 base00
+                             [131, 148, 150], // #839496 base0
+                             [147, 161, 161], // #93a1a1 base1
+                             [238, 232, 213], // #eee8d5 base2
+                             [253, 246, 227], // #fdf6e3 base3
+                             [181, 137, 0], // #b58900 yellow
+                             [203, 75, 22], // #cb4b16 orange
+                             [220, 50, 47], // #dc322f red
+                             [211, 54, 130], // #d33682 magenta
+                             [108, 113, 196], // #6c71c4 violet
+                             [38, 139, 210], // #268bd2 blue
+                             [42, 161, 152], // #2aa198 cyan
+                             [133, 153, 0] // #859900 green
+                            ];
+
+    const foregroundColors = [
+                              [88, 110, 117], // #586e75 base01
+                              [101, 123, 131], // #657b83 base00
+                              [131, 148, 150], // #839496 base0
+                              [147, 161, 161], // #93a1a1 base1
+                              [253, 246, 227], // #fdf6e3 base3
+                              [181, 137, 0], // #b58900 yellow
+                              [203, 75, 22], // #cb4b16 orange
+                              [220, 50, 47], // #dc322f red
+                              [211, 54, 130], // #d33682 magenta
+                              [108, 113, 196], // #6c71c4 violet
+                              [38, 139, 210], // #268bd2 blue
+                              [42, 161, 152], // #2aa198 cyan
+                              [133, 153, 0] // #859900 green
+                             ];
+
+    const backgroundColors = [[0, 43, 54], // #002b36 base03
+                              [7, 54, 66], // #073642 base02
+                              [238, 232, 213], // #eee8d5 base2
+                              [253, 246, 227], // #fdf6e3 base3
+                              [181, 137, 0], // #b58900 yellow
+                              [203, 75, 22], // #cb4b16 orange
+                              [220, 50, 47], // #dc322f red
+                              [211, 54, 130], // #d33682 magenta
+                              [108, 113, 196], // #6c71c4 violet
+                              [38, 139, 210], // #268bd2 blue
+                              [42, 161, 152], // #2aa198 cyan
+                              [133, 153, 0] // #859900 green
+                             ];
+
     // Based on https://stackoverflow.com/a/18858254/1873444
     // CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/
     // (c) 2013 davidkonrad https://stackoverflow.com/users/1407478/davidkonrad
     var elements = document.getElementsByTagName('*');
     for (var i=0;i<elements.length;i++) {
         var color = window.getComputedStyle(elements[i]).color;
-        elements[i].style.color=closestColor(colorToArray(color));
-        var backgroundColor = window.getComputedStyle(elements[i]).backgroundColor;
-        if (backgroundColor.indexOf('rgba')<0) {
-            elements[i].style.backgroundColor=closestColor(colorToArray(backgroundColor));
+        elements[i].style.color = closestColor(colorToArray(color),
+                                               foregroundColors);
+        var backgroundColor =
+            window.getComputedStyle(elements[i]).backgroundColor;
+        if (backgroundColor.indexOf('rgba') < 0) {
+            elements[i].style.backgroundColor =
+                closestColor(colorToArray(backgroundColor),
+                             backgroundColors);
         }
         var borderColor = window.getComputedStyle(elements[i]).borderColor;
-        if (borderColor.indexOf('rgba')<0) {
-            elements[i].style.borderColor=closestColor(colorToArray(borderColor));
+        if (borderColor.indexOf('rgba') < 0) {
+            elements[i].style.borderColor =
+                closestColor(colorToArray(borderColor),
+                             solarizedColors);
         }
 
     }
