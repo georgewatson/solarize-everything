@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         Solarize Everything
 // @namespace    https://georgewatson.me
-// @version      0.1
+// @version      0.2
 // @description  Makes everything Solarized
 // @author       George Watson
 // @match        *://*/*
 // @grant        none
+// @updateURL    https://raw.githubusercontent.com/georgewatson/solarize-everything/master/solarize_everything.js
+// @downloadURL  https://raw.githubusercontent.com/georgewatson/solarize-everything/master/solarize_everything.js
 // ==/UserScript==
 
 function rgbToLab(rgb){
