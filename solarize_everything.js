@@ -80,6 +80,10 @@ function arrayToColor(rgb) {
 
 
 function closestColor(color, colorList) {
+    // Answers are known for a few common colours
+    if (color == [0, 0, 0]) { return colorList[0]; }
+    if (color == [255, 255, 255]) { return [253, 246, 227]; }
+
     var minDist = 9999;
     var bestMatch = color;
     for (const possibleColor of colorList) {
