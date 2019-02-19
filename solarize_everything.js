@@ -152,6 +152,7 @@ function closestColor(color, colorList) {
         var color = window.getComputedStyle(elements[i]).color;
         elements[i].style.color = closestColor(colorToArray(color),
                                                foregroundColors);
+
         var backgroundColor =
             window.getComputedStyle(elements[i]).backgroundColor;
         if (backgroundColor.indexOf('rgba') < 0) {
@@ -159,10 +160,36 @@ function closestColor(color, colorList) {
                 closestColor(colorToArray(backgroundColor),
                              backgroundColors);
         }
-        var borderColor = window.getComputedStyle(elements[i]).borderColor;
-        if (borderColor.indexOf('rgba') < 0) {
-            elements[i].style.borderColor =
-                closestColor(colorToArray(borderColor),
+
+        // .borderColor returns multiple values (1, 2, 3, or 4)
+        // so it would be much more efficient to use those
+        // but this works for now
+        var borderLeftColor =
+            window.getComputedStyle(elements[i]).borderLeftColor;
+        if (borderLeftColor.indexOf('rgba') < 0) {
+            elements[i].style.borderLeftColor =
+                closestColor(colorToArray(borderLeftColor),
+                             foregroundColors);
+        }
+        var borderTopColor =
+            window.getComputedStyle(elements[i]).borderTopColor;
+        if (borderTopColor.indexOf('rgba') < 0) {
+            elements[i].style.borderTopColor =
+                closestColor(colorToArray(borderTopColor),
+                             foregroundColors);
+        }
+        var borderRightColor =
+            window.getComputedStyle(elements[i]).borderRightColor;
+        if (borderRightColor.indexOf('rgba') < 0) {
+            elements[i].style.borderRightColor =
+                closestColor(colorToArray(borderRightColor),
+                             foregroundColors);
+        }
+        var borderBottomColor =
+            window.getComputedStyle(elements[i]).borderBottomColor;
+        if (borderBottomColor.indexOf('rgba') < 0) {
+            elements[i].style.borderBottomColor =
+                closestColor(colorToArray(borderBottomColor),
                              foregroundColors);
         }
 
