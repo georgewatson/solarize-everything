@@ -166,32 +166,23 @@ function closestColor(color, colorList) {
         // but this works for now
         var borderLeftColor =
             window.getComputedStyle(elements[i]).borderLeftColor;
-        if (borderLeftColor.indexOf('rgba') < 0) {
-            elements[i].style.borderLeftColor =
-                closestColor(colorToArray(borderLeftColor),
-                             foregroundColors);
-        }
+        elements[i].style.borderLeftColor =
+            closestColor(colorToArray(borderLeftColor), foregroundColors);
+
         var borderTopColor =
             window.getComputedStyle(elements[i]).borderTopColor;
-        if (borderTopColor.indexOf('rgba') < 0) {
-            elements[i].style.borderTopColor =
-                closestColor(colorToArray(borderTopColor),
-                             foregroundColors);
-        }
+        elements[i].style.borderTopColor =
+            closestColor(colorToArray(borderTopColor), foregroundColors);
+
         var borderRightColor =
             window.getComputedStyle(elements[i]).borderRightColor;
-        if (borderRightColor.indexOf('rgba') < 0) {
-            elements[i].style.borderRightColor =
-                closestColor(colorToArray(borderRightColor),
-                             foregroundColors);
-        }
+        elements[i].style.borderRightColor =
+            closestColor(colorToArray(borderRightColor), foregroundColors);
+
         var borderBottomColor =
             window.getComputedStyle(elements[i]).borderBottomColor;
-        if (borderBottomColor.indexOf('rgba') < 0) {
-            elements[i].style.borderBottomColor =
-                closestColor(colorToArray(borderBottomColor),
-                             foregroundColors);
-        }
+        elements[i].style.borderBottomColor =
+            closestColor(colorToArray(borderBottomColor), foregroundColors);
 
     }
 })();
