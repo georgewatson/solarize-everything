@@ -150,12 +150,8 @@ function closestColor(color, colorList) {
                               [133, 153, 0] // #859900 green
                              ];
 
-    var knownForegrounds = {"rgb(0, 0, 0)": arrayToColor(foregroundColors[0]),
-                            "rgb(255, 255, 255)": "rgb(253, 246, 227)"
-                           }
-    var knownBackgrounds = {"rgb(0, 0, 0)": arrayToColor(backgroundColors[0]),
-                            "rgb(255, 255, 255)": "rgb(253, 246, 227)"
-                           }
+    var knownForegrounds = {}
+    var knownBackgrounds = {}
 
     // Based on https://stackoverflow.com/a/18858254/1873444
     // CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/
@@ -239,4 +235,12 @@ function closestColor(color, colorList) {
         }
 
     }
+
+    // If the body element had no background set, give it one
+    var body = document.getElementsByTagName("BODY")[0];
+    var bodyBackground = window.getComputedStyle(body).backgroundColor;
+    if (bodyBackground.indexOf('rgba') >= 0) {
+        body.style.backgroundColor = "rgb(253, 246, 227)";
+    }
+
 })();
