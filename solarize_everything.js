@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Solarize Everything
 // @namespace    https://github.com/georgewatson/solarize-everything
-// @version      0.2
+// @version      0.3
 // @description  Makes everything Solarized
 // @author       George Watson
 // @match        *://*/*
@@ -153,6 +153,11 @@ function closestColor(color, colorList) {
     var knownForegrounds = {}
     var knownBackgrounds = {}
 
+    if (localStorage.getItem('knownForegrounds')) {
+        knownForegrounds = JSON.parse(localStorage.getItem('knownForegrounds'));
+        knownBackgrounds = JSON.parse(localStorage.getItem('knownBackgrounds'));
+    }
+
     // Based on https://stackoverflow.com/a/18858254/1873444
     // CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/
     // (c) 2013 davidkonrad https://stackoverflow.com/users/1407478/davidkonrad
@@ -242,5 +247,8 @@ function closestColor(color, colorList) {
     if (bodyBackground.indexOf('rgba') >= 0) {
         body.style.backgroundColor = "rgb(253, 246, 227)";
     }
+
+    localStorage.setItem('knownForegrounds', JSON.stringify(knownForegrounds));
+    localStorage.setItem('knownBackgrounds', JSON.stringify(knownBackgrounds));
 
 })();
