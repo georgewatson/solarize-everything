@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Solarize Everything
-// @namespace    https://georgewatson.me
+// @namespace    https://github.com/georgewatson/solarize-everything
 // @version      0.2
 // @description  Makes everything Solarized
 // @author       George Watson
@@ -150,21 +150,41 @@ function closestColor(color, colorList) {
                               [133, 153, 0] // #859900 green
                              ];
 
+    var knownForegrounds = {"rgb(0, 0, 0)": arrayToColor(foregroundColors[0]),
+                            "rgb(255, 255, 255)": "rgb(253, 246, 227)"
+                           }
+    var knownBackgrounds = {"rgb(0, 0, 0)": arrayToColor(backgroundColors[0]),
+                            "rgb(255, 255, 255)": "rgb(253, 246, 227)"
+                           }
+
     // Based on https://stackoverflow.com/a/18858254/1873444
     // CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/
     // (c) 2013 davidkonrad https://stackoverflow.com/users/1407478/davidkonrad
     var elements = document.getElementsByTagName('*');
+
     for (var i=0;i<elements.length;i++) {
-        var color = window.getComputedStyle(elements[i]).color;
-        elements[i].style.color = closestColor(colorToArray(color),
-                                               foregroundColors);
+        var color = colorToArray(window.getComputedStyle(elements[i]).color);
+        if (color in knownForegrounds) {
+            elements[i].style.color = knownForegrounds[color]
+        } else {
+            knownForegrounds[color] = closestColor(colorToArray(color),
+                                                   foregroundColors);
+            elements[i].style.color = knownForegrounds[color];
+        }
 
         var backgroundColor =
             window.getComputedStyle(elements[i]).backgroundColor;
         if (backgroundColor.indexOf('rgba') < 0) {
-            elements[i].style.backgroundColor =
-                closestColor(colorToArray(backgroundColor),
-                             backgroundColors);
+            if (backgroundColor in knownBackgrounds) {
+                elements[i].style.backgroundColor =
+                    knownBackgrounds[backgroundColor]
+            } else {
+                knownBackgrounds[backgroundColor] =
+                    closestColor(colorToArray(backgroundColor),
+                                 backgroundColors);
+                elements[i].style.backgroundColor =
+                    knownBackgrounds[backgroundColor];
+            }
         }
 
         // .borderColor returns multiple values (1, 2, 3, or 4)
@@ -172,23 +192,51 @@ function closestColor(color, colorList) {
         // but this works for now
         var borderLeftColor =
             window.getComputedStyle(elements[i]).borderLeftColor;
-        elements[i].style.borderLeftColor =
-            closestColor(colorToArray(borderLeftColor), foregroundColors);
+        if (borderLeftColor in knownForegrounds) {
+            elements[i].style.borderLeftColor =
+                knownForegrounds[borderLeftColor]
+        } else {
+            knownForegrounds[borderLeftColor] =
+                closestColor(colorToArray(borderLeftColor), foregroundColors);
+            elements[i].style.borderLeftColor =
+                knownForegrounds[borderLeftColor];
+        }
 
         var borderTopColor =
             window.getComputedStyle(elements[i]).borderTopColor;
-        elements[i].style.borderTopColor =
-            closestColor(colorToArray(borderTopColor), foregroundColors);
+        if (borderTopColor in knownForegrounds) {
+            elements[i].style.borderTopColor =
+                knownForegrounds[borderTopColor]
+        } else {
+            knownForegrounds[borderTopColor] =
+                closestColor(colorToArray(borderTopColor), foregroundColors);
+            elements[i].style.borderTopColor =
+                knownForegrounds[borderTopColor];
+        }
 
         var borderRightColor =
             window.getComputedStyle(elements[i]).borderRightColor;
-        elements[i].style.borderRightColor =
-            closestColor(colorToArray(borderRightColor), foregroundColors);
+        if (borderRightColor in knownForegrounds) {
+            elements[i].style.borderRightColor =
+                knownForegrounds[borderRightColor]
+        } else {
+            knownForegrounds[borderRightColor] =
+                closestColor(colorToArray(borderRightColor), foregroundColors);
+            elements[i].style.borderRightColor =
+                knownForegrounds[borderRightColor];
+        }
 
         var borderBottomColor =
             window.getComputedStyle(elements[i]).borderBottomColor;
-        elements[i].style.borderBottomColor =
-            closestColor(colorToArray(borderBottomColor), foregroundColors);
+        if (borderBottomColor in knownForegrounds) {
+            elements[i].style.borderBottomColor =
+                knownForegrounds[borderBottomColor]
+        } else {
+            knownForegrounds[borderBottomColor] =
+                closestColor(colorToArray(borderBottomColor), foregroundColors);
+            elements[i].style.borderBottomColor =
+                knownForegrounds[borderBottomColor];
+        }
 
     }
 })();
