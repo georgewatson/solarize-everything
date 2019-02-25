@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Solarize Everything
 // @namespace    https://github.com/georgewatson/solarize-everything
-// @version      0.3
+// @version      0.3.1
 // @description  Makes everything Solarized
 // @author       George Watson
 // @match        *://*/*
@@ -241,8 +241,8 @@ function closestColor(color, colorList) {
 
     }
 
-    // If the body element had no background set, give it one
-    var body = document.getElementsByTagName("BODY")[0];
+    // If the <html> element had no background set, give it one
+    var body = document.getElementsByTagName("HTML")[0];
     var bodyBackground = window.getComputedStyle(body).backgroundColor;
     if (bodyBackground.indexOf('rgba') >= 0) {
         body.style.backgroundColor = "rgb(253, 246, 227)";
