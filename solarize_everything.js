@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Solarize Everything
 // @namespace    https://github.com/georgewatson/solarize-everything
-// @version      0.3.1
+// @version      0.3.2
 // @description  Makes everything Solarized
 // @author       George Watson
 // @match        *://*/*
@@ -153,9 +153,12 @@ function closestColor(color, colorList) {
     var knownForegrounds = {}
     var knownBackgrounds = {}
 
+    try {
     if (localStorage.getItem('knownForegrounds')) {
         knownForegrounds = JSON.parse(localStorage.getItem('knownForegrounds'));
         knownBackgrounds = JSON.parse(localStorage.getItem('knownBackgrounds'));
+    }
+    } catch (err) {
     }
 
     // Based on https://stackoverflow.com/a/18858254/1873444
