@@ -154,10 +154,12 @@ function closestColor(color, colorList) {
     var knownBackgrounds = {}
 
     try {
-    if (localStorage.getItem('knownForegrounds')) {
-        knownForegrounds = JSON.parse(localStorage.getItem('knownForegrounds'));
-        knownBackgrounds = JSON.parse(localStorage.getItem('knownBackgrounds'));
-    }
+        if (localStorage.getItem('knownForegrounds')) {
+            knownForegrounds = JSON.parse(
+                localStorage.getItem('knownForegrounds'));
+            knownBackgrounds = JSON.parse(
+                localStorage.getItem('knownBackgrounds'));
+        }
     } catch (err) {
     }
 
