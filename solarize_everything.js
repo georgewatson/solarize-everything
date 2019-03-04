@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Solarize Everything
 // @namespace    https://github.com/georgewatson/solarize-everything
-// @version      0.3.2
+// @version      0.3.3
 // @description  Makes everything Solarized
 // @author       George Watson
 // @match        *://*/*
@@ -98,8 +98,7 @@ function closestColor(color, colorList) {
     return arrayToColor(bestMatch);
 };
 
-
-(function() {
+function main() {
     'use strict';
 
     // const solarizedColors = [[0, 43, 54], // #002b36 base03
@@ -256,4 +255,8 @@ function closestColor(color, colorList) {
     localStorage.setItem('knownForegrounds', JSON.stringify(knownForegrounds));
     localStorage.setItem('knownBackgrounds', JSON.stringify(knownBackgrounds));
 
-})();
+    // Repeat every second
+    setTimeout(main, 1000);
+}
+
+main();
