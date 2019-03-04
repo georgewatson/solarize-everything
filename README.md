@@ -37,8 +37,6 @@ It currently operates on the following CSS properties:
 * While most sites are greatly improved by the new palette, some may look a bit
   ugly. The script can generally be disabled on a per-site basis in your
   userscript settings.
-* Elements not present on the initial page load do not have their colours
-  modified ([#1](https://github.com/georgewatson/solarize-everything/issues/1))
 * Gradient backgrounds are not currently solarized
   ([#2](https://github.com/georgewatson/solarize-everything/issues/2))
 * Images are not currently recoloured (and probably never will be)
