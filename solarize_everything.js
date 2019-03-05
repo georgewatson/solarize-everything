@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Solarize Everything
 // @namespace    https://github.com/georgewatson/solarize-everything
-// @version      0.3.3
+// @version      0.3.4
 // @description  Makes everything Solarized
 // @author       George Watson
 // @match        *://*/*
@@ -256,7 +256,7 @@ function main() {
     localStorage.setItem('knownBackgrounds', JSON.stringify(knownBackgrounds));
 
     // Repeat every second
-    setTimeout(main, 1000);
+    setTimeout(main, 5000);
 }
 
 main();
